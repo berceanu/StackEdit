@@ -1,6 +1,6 @@
 % Global Scratchpad
 
-# 2019-05-05 18:22:07
+## TODO
 
 - [ ] update signac to latest
 - [X] create `fbpic + signac` = 💓 `GitHub` repo
