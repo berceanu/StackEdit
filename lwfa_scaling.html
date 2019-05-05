@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>lwfa_scaling</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="cetal-calculation">CETAL calculation</h1>
+<h2 id="cpls-parameters">CPLS parameters</h2>
+<p>The Ti:Sapph CETAL-PW Laser System (CPLS) has a wavelength <span class="math inline">\(\lambda_L = 800\)</span> nanometers. The focal length of its off-axis parabolic mirror (OAP) is 3.2 meters, while the beam size is 200 millimeters. We can take the pulse duration to be <span class="math inline">\(\tau_L = 40\)</span> fs at FWHM in intensity.</p>
+<h2 id="electron-acceleration-estimate">Electron acceleration estimate</h2>
+<p>For optimal acceleration, we impose the condition that the dephasing length should be equal to the pump depletion length <span class="math inline">\(L_{\text{dephasing}} = L_{\text{depletion}}\)</span>.</p>
+<p><span class="math display">\[L_{\text{dephasing}} = \frac{4}{3} \left(\frac{\omega_L}{\omega_p}\right)^2 \frac{\sqrt{a_0}}{k_p} = L_{\text{depletion}} = \left(\frac{\omega_L}{\omega_p}\right)^2 c \tau_L\]</span></p>
+<p>In practical units, we have <span class="math inline">\(\lambda_p [\mu \text{m}] = 3.34 \times 10^{10} (n_p [\text{cm}^{-3}])^{-1/2}\)</span>, therefore <span class="math inline">\(k_p [\mu \text{m}^{-1}]= 2\pi / \lambda_p [\mu \text{m}] = 1.88 \times 10^{-10} (n_p [\text{cm}^{-3}])^{1/2}\)</span> and <span class="math inline">\(\omega_p [\text{fs}^{-1}] = 5.64 \times 10^{-11} (n_p [\text{cm}^{-3}])^{1/2}\)</span>. This allows us to obtain the ratio <span class="math inline">\(a_0/n_p\)</span> from above.</p>
+<p><span class="math display">\[\frac{a_0}{n_p [\text{cm}^{-3}]} = 1.79 \times 10^{-21} (\tau_L [\text{fs}])^2\]</span></p>
+<h3 id="plasma-density-and-normalized-vector-potential">Plasma density and normalized vector potential</h3>
+<p>If we want to use any external guiding (eg via capilaries), then we also need to impose the condition for self-guided propagation of the laser:</p>
+<p><span class="math display">\[a_0 \geq \left(\frac{n_c}{n_p}\right)^{1/5}\]</span></p>
+<p>with the critical density <span class="math inline">\(n_c [\text{cm}^{-3}] = 1.12 \times 10^{21} / (\lambda_L [\mu\text{m}])^2\)</span>, which is <span class="math inline">\(1.75 \times 10^{21} \text{cm}^{-3}\)</span> in our case. Substituting above and taking the lower limit, we get</p>
+<p><span class="math display">\[n_p [\text{cm}^{-3}] = \frac{1.12 \times 10^{21} }{a_0^5 (\lambda_L [\mu\text{m}])^2}\]</span></p>
+<p>Substituting <span class="math inline">\(n_p\)</span> in the ratio <span class="math inline">\(a_0/n_p\)</span> from above, we finally get:</p>
+<p><span class="math display">\[a_0 \approx 2^{1/6} \left( \frac{\tau_L [\text{fs}]}{\lambda_L [\mu\text{m}]} \right)^{1/3} \]</span></p>
+<p>and</p>
+<p><span class="math display">\[n_p [\text{cm}^{-3}] = 6.29 \times 10^{20} \frac{1}{(\lambda_L [\mu\text{m}])^{1/3} (\tau_L [\text{fs}])^{5/3}}\]</span></p>
+<p>For CPLS parameters, we get <span class="math inline">\(a_0 \approx 4.2\)</span> and <span class="math inline">\(n_p \approx 1.5 \times 10^{18} \text{cm}^{-3} = 8.57 \times 10^{-4} n_c\)</span>. For <span class="math inline">\(a_0 \geq 4-5\)</span> we also get self-injection from pure Helium. Helium has the ionization energies 24.59 eV (He<span class="math inline">\({}^{+}\)</span>) and 54.42 (He<span class="math inline">\({}^{2+}\)</span>), corresponding to laser intensities <span class="math inline">\(1.4 \times 10^{15}\)</span>, respectively <span class="math inline">\(8.8 \times 10^{15}\)</span> W/cm<span class="math inline">\({}^2\)</span> (Gibbon, “Short pulse laser interactions with matter”, p. 22), and will therefore be easily ionized by the laser prepulse. Knowing the density, we get <span class="math inline">\(\omega_p = 6.91 \times 10^{-2}\)</span> fs<span class="math inline">\({}^{-1}\)</span>, and more importantly, <span class="math inline">\(\omega_p^{-1} = 14.48\)</span> fs, which is the same order of magnitude as the pulse duration <span class="math inline">\(\tau_L = 40\)</span> fs. For <span class="math inline">\(\tau_L \gg \omega_p^{-1}\)</span> (eg. <span class="math inline">\(\tau_L = 600\)</span> fs), one would either be in the SMLWFA or DLA regime, depending on the value of <span class="math inline">\(a_0\)</span>.</p>
+<h3 id="beam-waist">Beam waist</h3>
+<p>We also need to match the beam waist <span class="math inline">\(w_0\)</span> of the focused Gaussian laser pulse to the plasma, giving the condition <span class="math inline">\(w_0 k_p = 2 \sqrt{a_0}\)</span>, so</p>
+<p><span class="math display">\[w_0 [\mu \text{m}] = 1.06 \times 10^{10}   \left(\frac{a_0}{n_p [\text{cm}^{-3}]}\right)^{1/2} = 44.84  \frac{\tau_L [\text{fs}]}{100}\]</span></p>
+<p>For CPLS, we get <span class="math inline">\(w_0 \approx 18 \mu \text{m}\)</span> at <span class="math inline">\(1/e^2\)</span> intensity, so FWHM (1/2 intensity) = <span class="math inline">\(w_0 \sqrt{2 \ln{2}} \approx 21 \mu\)</span>m. The realistic value, according to Liviu, is <span class="math inline">\(25 \mu \text{m}\)</span> and the diffraction-limited value according to <em>CALCTOOL</em> is <span class="math inline">\(16 \mu \text{m}\)</span>.</p>
+<h3 id="laser-energy-power-and-intensity">Laser energy, power and intensity</h3>
+<p>We now estimate the required laser energy <span class="math inline">\(\varepsilon_L\)</span>. The peak laser intensity in the focal plane is</p>
+<p><span class="math display">\[I_L [10^{18} \text{W}/\text{cm}^2 ] \approx 6 \times 10^4  \frac{\varepsilon_L [\text{J}]}{\tau_L [\text{fs}] (w_0 [\mu \text{m}])^2}\]</span></p>
+<p>so for our parameters <span class="math inline">\(I_L \approx 3.56 \times 10^{19}\)</span> W/cm<span class="math inline">\({}^2\)</span>. For a relative scale, the atomic Coulomb field is on the order of <span class="math inline">\(10^{14}\)</span> W/cm<span class="math inline">\({}^2\)</span> and relativistic effects become important for laser intensities above <span class="math inline">\(10^{17}\)</span> W/cm<span class="math inline">\({}^2\)</span> (<span class="math inline">\(a_0 \geq 1\)</span>), while QED effects such as radiation reaction only become important for intensities beyond <span class="math inline">\(\sim 2 \times 10^{21}\)</span> W/cm<span class="math inline">\({}^2\)</span>. We know that <span class="math inline">\(a_0 = 0.855 \lambda_L [\mu\text{m}] (I_L [10^{18} \text{W}/\text{cm}^2 ])^{1/2}\)</span>, so</p>
+<p><span class="math display">\[\varepsilon_L [\text{J}] = 2.28 \times 10^{-5} a_0^2 (w_0 [\mu \text{m}])^2 \frac{\tau_L [\text{fs}] }{(\lambda_L [\mu\text{m}])^2} = 5.68 \times 10^{-6} \frac{ (\tau_L [\text{fs}])^{11/3} }{(\lambda_L [\mu\text{m}])^{8/3}}\]</span></p>
+<p>Therefore, for CPLS we need <span class="math inline">\(\varepsilon_L \approx 7.7\)</span> J on target. If we assume the laser energy before the compressor is 20 J, and 30% is lost in the compressor and beam transport, we are left with 14 J in the chamber. If 50% of this energy can be focused into the FWHM spot of <span class="math inline">\(21 \mu\)</span>m, we get 7 J on target.</p>
+<p>The laser power on target is</p>
+<p><span class="math display">\[P [\text{TW}] = 2.41 \times 10^{18}   \frac{a_0^3}{n_p [\text{cm}^{-3}]} \frac{1}{(\lambda_L [\mu\text{m}])^2}\]</span></p>
+<p><span class="math display">\[P [\text{TW}] = 2 \times 10^3 \sqrt{\frac{\ln{2}}{\pi}} \frac{1}{\tau_L [\text{fs}]} \varepsilon_L [\text{J}] = 5.34 \times 10^{-3} \left(\frac{ \tau_L [\text{fs}] }{\lambda_L [\mu\text{m}]}\right)^{8/3}\]</span></p>
+<p>so approximately 180 TW in our case.</p>
+<h3 id="acceleration-distance">Acceleration distance</h3>
+<p>The optimum propagation distance is equal to <span class="math inline">\(L = L_{\text{dephasing}} (= L_{\text{depletion}})\)</span>.</p>
+<p><span class="math display">\[L [\text{mm}] = 3.34 \times 10^{17} \frac{\tau_L[\text{fs}]}{ (\lambda_L [\mu\text{m}])^2} \frac{1}{n_p [\text{cm}^{-3}]} = 5.31 \times 10^{-4} \frac{(\tau_L [\text{fs}])^{8/3}}{ (\lambda_L [\mu\text{m}])^{5/3}}\]</span></p>
+<p>which for CPLS amounts to <span class="math inline">\(L \approx 14\)</span> mm.</p>
+<h3 id="maximum-electron-energy-and-charge">Maximum electron energy and charge</h3>
+<p>The maximum electron energy that can be reached under these circumstances is</p>
+<p><span class="math display">\[\gamma = \frac{\Delta \varepsilon}{mc^2} = \frac{2}{3} a_0 \frac{\omega_L^2}{\omega_p^2}\]</span></p>
+<p><span class="math display">\[\gamma = 7.44 \times 10^{20} \frac{a_0}{n_p [\text{cm}^{-3}]} \frac{1}{ (\lambda_L [\mu\text{m}])^2 } = 1.33 \left(\frac{\tau_L [\text{fs}]}{ \lambda_L [\mu\text{m}] }\right)^2 \]</span></p>
+<p><span class="math display">\[\Delta \varepsilon [\text{GeV}]= 5.11 \times 10^{-4} \gamma = 6.8 \times 10^{-4} \left(\frac{\tau_L [\text{fs}]}{ \lambda_L [\mu\text{m}] }\right)^2\]</span></p>
+<p>For CPLS, we get <span class="math inline">\(\Delta \varepsilon = 1.7\)</span> GeV and a Lorentz factor <span class="math inline">\(\gamma = 3325\)</span>.</p>
+<p>We assume the blowout radius <span class="math inline">\(R = w_0 = 44.84 \tau_L [\text{fs}]/100 = 18 \, \mu\)</span>m. The number of accelerated electrons <span class="math inline">\(N_e \propto R^3 n_p\)</span> is equal to the ionic charge of the bubble, so (Lu et. al, 2007)</p>
+<p><span class="math display">\[N_e \approx 3.13 \times 10^8 \lambda_L [\mu\text{m}] \left(P [\text{TW}]\right)^{1/2} = 2.28 \times 10^7  \frac{ (\tau_L [\text{fs}])^{4/3} }{ (\lambda_L [\mu\text{m}])^{1/3} }\]</span></p>
+<p><span class="math display">\[N_e \approx 4.85 \times 10^{17}   \frac{a_0^{3/2}}{(n_p [\text{cm}^{-3}])^{1/2}} \]</span></p>
+<p>giving a charge</p>
+<p><span class="math display">\[Q_e [\text{pC}] = N_e \times e [\text{pC}] \approx 3.65  \frac{ (\tau_L [\text{fs}])^{4/3} }{ (\lambda_L [\mu\text{m}])^{1/3} } \]</span></p>
+<p>For CPLS we get <span class="math inline">\(Q_e \approx 540 \, \text{pC} \approx 0.5\)</span> nC and <span class="math inline">\(N_e = 3.36 \times 10^9\)</span> electrons. As a last note, with PW lasers, the higher laser energy can be focused to a larger focal spot matched by a lower plasma density.</p>
+<h3 id="external-guiding">External guiding</h3>
+<ul>
+<li>[ ] adapt to CETAL parameters</li>
+</ul>
+<p>3J, <span class="math inline">\(a_0 = 2\)</span>, <span class="math inline">\(n_p = 5.1 \times 10^{17}\)</span> cm<span class="math inline">\({}^{-3}\)</span>, <span class="math inline">\(w_0 = 21\, \mu\text{m}\)</span>, <span class="math inline">\(\tau_L = 47\, \text{fs}\)</span> - needs external guiding (capilaries) - needs external injection - can reach <span class="math inline">\(\Delta \varepsilon = 2.4\)</span> GeV after 52 mm of plasma</p>
+<h2 id="betatron-emission">Betatron emission</h2>
+<p>After matching the laser spot size, and pulse duration to the plasma density, we can look at betatron emission. The betatron oscillation radius <span class="math inline">\(r_{\beta} = 3\, \mu\)</span>m for a blowout radius <span class="math inline">\(R = 21 \, \mu\)</span>m. Since the betatron oscillations are limited by the bubble size, it is reasonable to assume a linear dependence on <span class="math inline">\(R\)</span> and therefore take <span class="math inline">\(r_{\beta} = 2.6 \, \mu\)</span>m in our case.</p>
+<p>We now need to work out the five relevant parameters for the wiggler: the relativistic electron factor <span class="math inline">\(\gamma\)</span>, the number of electrons <span class="math inline">\(N_e\)</span>, the strength parameter <span class="math inline">\(K\)</span>, the period of the wiggler <span class="math inline">\(\lambda_u\)</span> and the number of (betatron) periods <span class="math inline">\(N\)</span>. We already know the first two parameters. Once we have the parameters, we can calculate the critical radiation energy <span class="math inline">\(\hbar \omega_c\)</span>, the opening angle of the radiation <span class="math inline">\(\theta_r\)</span> and the number of emitted photons per electron and per betatron period, <span class="math inline">\(N_{\gamma}\)</span>. We can then get the total number of emitted photons per laser shot, <span class="math inline">\(N_{\gamma} \times N_e \times N\)</span>.</p>
+<p><span class="math display">\[\theta_r [\text{mrad}] = 10^3 \times \frac{K}{\gamma} \]</span> <span class="math display">\[N_{\gamma} = 3.31 \times 10^{-2} K\]</span> <span class="math display">\[\hbar \omega_c [\text{keV}] = 1.86 \times 10^{-3} \frac{K \gamma^2}{\lambda_u [\mu\text{m}]}\]</span></p>
+<h3 id="wiggler-parameters">Wiggler parameters</h3>
+<p>In the case of betatron oscillations, the strength parameter is given by</p>
+<p><span class="math display">\[K = \sqrt{\frac{\gamma}{2}} \left(k_p [\mu\text{m}^{-1}]\right) (r_{\beta} [\mu\text{m}]) = 1.33 \times 10^{-10} r_{\beta} [\mu\text{m}] (\gamma \, n_p [\text{cm}^{-3}])^{1/2} \]</span></p>
+<p>so <span class="math inline">\(K \approx 25\)</span> in our case, which puts us in the wiggler regime <span class="math inline">\(K \gg 1\)</span>.</p>
+<p><span class="math display">\[\lambda_u [\mu\text{m}]= \sqrt{2} \gamma^{1/2} (\lambda_p [\mu\text{m}]) = 4.72 \times 10^{10}  \left(\frac{\gamma}{n_p [\text{cm}^{-3}]}\right)^{1/2}\]</span></p>
+<p>so <span class="math inline">\(\lambda_u = 2222 \, \mu\text{m} = 2.22\)</span> mm.</p>
+<h3 id="radiation-properties">Radiation properties</h3>
+<p>We now easily obtain <span class="math inline">\(\theta_r = 8\)</span> mrad and <span class="math inline">\(N_{\gamma} = 0.8\)</span> photons / (electron x betatron period). While the electrons radiate throughout the whole acceleration process, theefficiency main contribution comes from the part of the trajectory where their energy is maximum, ie, after the distance <span class="math inline">\(L\)</span>. If the electron is around its maximum energy for about <span class="math inline">\(N \sim 3\)</span> betatron periods, the total number of emitted photons per shot will be <span class="math inline">\(N_{\gamma}^{\text{shot}} = N_{\gamma} \times N_e \times N = 0.8 \times 3.36 \times 10^9 \times 3 \approx 8 \times 10^9\)</span> photons. Finally, the critical energy is in our case <span class="math inline">\(\hbar \omega_c = 230\)</span> keV.</p>
+<p><strong>Note:</strong> The betatron amplitude <span class="math inline">\(r_{\beta} \propto \sqrt{a_0/n_p}\)</span> and the numer of betatron oscillations <span class="math inline">\(N \propto 1/\sqrt{n_p}\)</span>.</p>
+<h2 id="quantum-effects">Quantum effects</h2>
+<p>We are now ready to estimate the size of the quantum corrections. Quantum effects become important when the electron energy loss due to photon emission becomes comparable to the electron energy.</p>
+<h3 id="nonlinear-quantum-parameter">Nonlinear quantum parameter</h3>
+<p>We first look at the so-called nonlinear quantum parameter <span class="math inline">\(\chi_0\)</span> defined in (Di Piazza et al., 2012) for the case of an ultrarelativistic electron counter-propagating with respect to a plane wave:</p>
+<p><span class="math display">\[\chi_0 = 5.9 \times 10^{-3} \Delta \varepsilon [\text{GeV}]  (I_L [10^{18} \text{W}/\text{cm}^2] )^{1/2}\]</span></p>
+<p>giving <span class="math inline">\(\chi_0 \approx 6 \times 10^{-2}\)</span>. <span class="math inline">\(\chi_0\)</span> can be interpreted as the aplitude of the plane wave’s electric field in the electron rest frame (in units of the critical QED field <span class="math inline">\(m^2/e = 1.3 \times 10^{16}\)</span> V/cm <span class="math inline">\(= 1.3 \times 10^6\)</span> TV/m) and controld quantum effects such as photon recoil and spin. Since <span class="math inline">\(\chi_0 \ll 1\)</span>, these effects play a minor role here. In fact our electric field is just <span class="math inline">\(E_L [\text{TV/m}] = 3.21 a_0 / \lambda_L [\mu\text{m}] = 0.169\)</span> TV/cm. Inside the plasma, the maximum accelerating field achievable at a given plasma density is <span class="math inline">\(\approx a_0^{1/2}E_0\)</span> (for <span class="math inline">\(a_0 \geq 2\)</span>), where <span class="math inline">\(E_0\)</span> is the cold nonrelativistic wave-breaking field, <span class="math inline">\(E_0 [\text{V/cm}] \approx 0.96 (n_p [\text{cm}^{-3}])^{1/2}\)</span>. In our case <span class="math inline">\(a_0^{1/2}E_0 = 2.41 \times 10^9\)</span> V/cm.</p>
+<h3 id="interaction-duration">Interaction duration</h3>
+<p>The other way to estimate quantum effects is by following (Corde et al., 2013), which explains that radiation reaction can be neglected when the electron - laser interaction duration is much smaller than the electron energy loss rate, or equivalently, the number of oscillations <span class="math inline">\(N \ll N_{\text{RR}}\)</span>, with</p>
+<p><span class="math display">\[N_{\text{RR}} = 2.7 \times 10^7 \frac{\lambda_u [\mu\text{m}]}{\gamma K^2}\]</span></p>
+<p>so for CPLS parameters <span class="math inline">\(N_{\text{RR}} \sim 2.9 \times 10^4 \gg N\)</span>.</p>
+<h2 id="multiple-stages">Multiple stages</h2>
+<ul>
+<li>[ ] explain why people look at 2-stage solution
+<ul>
+<li>[ ] see slack chat with Igor</li>
+</ul></li>
+</ul>
+<h2 id="computational-resources">Computational resources</h2>
+<ul>
+<li>[ ] estimate computational resources for PIC based on these parameters
+<ul>
+<li>[ ] PIConGPU Python memory calculator</li>
+<li>[ ] png collage</li>
+</ul></li>
+</ul>
+<h1 id="gbs-calculation">GBS calculation</h1>
+<h2 id="gbs-parameters">GBS parameters</h2>
+<p>The Gamma Beam System (GBS) consists of a 0.1 TW, 0.4 J, 3.5 ps FWHM Yb:Yag laser system operating at its second harmonic <span class="math inline">\(\lambda_L = 515\)</span> nm (0.1%BW) and a linear electron accelerator (LINAC) of average current <span class="math inline">\(0.75 \, \mu\)</span>A. The photons from the laser are scattered by electrons from the LINAC, which have a tunable energy in the range 80-720 MeV at 0.1%BW. The electrons come in trains which are 10 ms apart (100 Hz LINAC rep rate), and each train contains 32 bunches separated by 16 ns. The bunches have a charge <span class="math inline">\(Q_e = 250\)</span> pC and a length between 100 and 400 <span class="math inline">\(\mu\)</span>m, while their focal spot size is 15 <span class="math inline">\(\mu\)</span>m. By use of a recirculator, the same laser pulse can interact with all 32 electron bunches in a train before being dumped, resulting in an “effective” laser repetition rate of 3.2 kHz. At the interaction points, the laser beam waist is <span class="math inline">\(w_0 = 28 \, \mu\)</span>m, resulting in <span class="math inline">\(I_L = 8.7 \times 10^{15}\)</span> W/cm<span class="math inline">\({}^2\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> For the following, we will consider the electrons to be at the maximum LINAC energy of 720 MeV, corresponding to a Lorentz factor <span class="math inline">\(\gamma = 1409\)</span>. The other two important parameters are <span class="math inline">\(a_0 = 0.04\)</span> and <span class="math inline">\(\lambda_L = 515\)</span> nm.</p>
+<h2 id="undulator-parameters">Undulator parameters</h2>
+<p>In this case, as opposed to the betatron one, we are dealing with an undulator, with strength parameter <span class="math inline">\(K = a_0 = 0.04 \ll 1\)</span>, while the period <span class="math inline">\(\lambda_u = \lambda_L / 2 = 0.2575\, \mu\)</span>m. Knowing the bunch charge, we can calculate <span class="math inline">\(N_e = 1.6 \times 10^9\)</span> electrons. The last parameter we are missing is the number of oscillations periods <span class="math inline">\(N\)</span>, which in this case is given by the number of laser cycles per pulse, <span class="math inline">\(N = \tau_L / T_0 \approx 2 \times 10^3\)</span>, with <span class="math inline">\(T_0\)</span> being the laser oscillation period <span class="math inline">\(T_0 = \lambda_L / c = 1.72\)</span> fs.</p>
+<h2 id="thomson-backscattering-spectrum">Thomson backscattering spectrum</h2>
+<p>The scaling formulas in the undulator regime are:</p>
+<p><span class="math display">\[\theta_r [\mu\text{rad}] = 10^6 \times \frac{1}{\gamma} \]</span> <span class="math display">\[N_{\gamma} = 1.53 \times 10^{-2} K^2\]</span> <span class="math display">\[\hbar \omega [\text{MeV}] = 2.48 \times 10^{-6} \frac{\gamma^2}{\lambda_u [\mu\text{m}] \left(1 + \frac{K^2}{2}\right)}\]</span></p>
+<p>We now easily obtain <span class="math inline">\(\theta_r = 700\, \mu\)</span>rad and <span class="math inline">\(N_{\gamma} = 2.4 \times 10^{-5}\)</span> photons / (electron x laser cycle). The total number of emitted photons per shot will be <span class="math inline">\(N_{\gamma}^{\text{shot}} = N_{\gamma} \times N_e \times N = 2.4 \times 10^{-5} \times 1.6 \times 10^9 \times 2 \times 10^3 = 7.7 \times 10^7\)</span> photons. Each laser pulse carries around <span class="math inline">\(10^{19}\)</span> 2.4 eV photons, of which only <span class="math inline">\(1.3 \times 10^6\)</span> will be back-scattered by each bunch to become <span class="math inline">\(\gamma\)</span> photons (arXiv:1407.3669, 2014). Finally, the fundamental radiation energy is in our case <span class="math inline">\(\hbar \omega = 19.1\)</span> MeV, versus the 19.5 MeV from the GBS specs.</p>
+<h2 id="quantum-effects-1">Quantum effects</h2>
+<p>The Lorentz factor for 720 MeV electrons is <span class="math inline">\(\gamma = 1409\)</span>, while <span class="math inline">\(K = 0.05\)</span> and <span class="math inline">\(\lambda_u = 0.2575 \, \mu\)</span>m, therefore <span class="math inline">\(N_{\text{RR}} = 2 \times 10^6\)</span>, compared to <span class="math inline">\(N \sim 2 \times 10^3\)</span> cycles/pulse. The nonlinear quantum parameter <span class="math inline">\(\chi_0 = 4.3 \times 10^{-4}\)</span>.</p>
+<h1 id="todo">TODO</h1>
+<ul>
+<li><p>[ ] send to Ong together with physical explanation for <span class="math inline">\(\Delta \varepsilon\)</span> vs <span class="math inline">\(Q_e\)</span> and <span class="math inline">\(\Delta \varepsilon\)</span> versus laser depletion</p></li>
+<li><p>[ ] compute <span class="math inline">\(r_{\beta}\)</span> and <span class="math inline">\(N\)</span> from 15 J example by scaling and recompute all quantities that depend on them</p></li>
+</ul>
+<h3 id="radiation-spectrum">Radiation spectrum</h3>
+<ul>
+<li>[ ] what does the betatron spectrum look like</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Synchrotron_light_source#Brilliance">brilliance</a>: photons/(s mrad<span class="math inline">\({}^2\)</span> mm<span class="math inline">\({}^2\)</span> 0.1% BW) vs E[keV] spectral intensity: photons/0.1%BW vs E[keV]</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The other parameters are: <span class="math inline">\(k_L = 12.2\)</span> <span class="math inline">\(\mu\)</span>m<span class="math inline">\({}^{-1}\)</span>, <span class="math inline">\(\omega_L = 3.65\)</span> fs<span class="math inline">\({}^{-1}\)</span>, <span class="math inline">\(E_L = 2.6 \times 10^{-3}\)</span> TV/cm and Rayleigh length <span class="math inline">\(z_R = 4.7\)</span> mm.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>

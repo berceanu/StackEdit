@@ -1,0 +1,6 @@
+{
+    "editor.insertSpaces": false,
+    "editor.wrappingColumn": 0,
+    "editor.quickSuggestions": false,
+    "pandoc.htmlOptString": "-s --css=css/style.css -V lang=en -V highlighting-css= --mathjax -t html5"
+}
