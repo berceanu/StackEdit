@@ -23,6 +23,10 @@ Regime" by H.S. Ghotra *et al.* reports increase dephasing length.
 - DLA significantly increasing the LWFA energy gain by extending the dephasing
   length.
 
+- two distinct groups of injected electrons: (i) high energy DLA group that
+  benefits from both DLA and high LWFA (due to delayed dephasing) and (ii) low energy non-DLA group that
+  experiences smaller gain from LWFA (and nothing from DLA)
+
 - betatron resonance: detuning? damping? effect of angle $\delta$?
 
   resonance condition to be satisfied over plasma length is that
@@ -47,11 +51,12 @@ Regime" by H.S. Ghotra *et al.* reports increase dephasing length.
 - what is the dependence on the inial phase of the betatron oscillations,
   $p_x(t=0)$ and $x(t=0)$?
 
+- in Zhang, Xi, et al. Plasma Physics and Controlled Fusion 60, 105002 (2018),
+  they conclude that 
 
 - TODO: add red points from manuscript
 
+
+**Zhang, Xi et al. Phys.Rev.Lett. 114, 184801 (2015)** #3
+Zhang, Xi, et al. Plasma Physics and Controlled Fusion 60, 105002 (2018) #2
 H. Akou, Physics of Plasmas 25, 063105 (2018)
-
-**Zhang, Xi et al. Phys.Rev.Lett. 114, 184801 (2015)**
-
-Zhang, Xi, et al. Plasma Physics and Controlled Fusion 60, 105002 (2018)
