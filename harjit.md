@@ -47,6 +47,9 @@ Regime" by H.S. Ghotra *et al.* reports increase dephasing length.
 - what is the dependence on the inial phase of the betatron oscillations,
   $p_x(t=0)$ and $x(t=0)$?
 
+
+- TODO: add red points from manuscript
+
 H. Akou, Physics of Plasmas 25, 063105 (2018)
 
 **Zhang, Xi et al. Phys.Rev.Lett. 114, 184801 (2015)**
