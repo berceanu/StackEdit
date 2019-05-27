@@ -1,5 +1,5 @@
 ---
-title: Review of Chirped Laser Pulse Controlled Acceleration in Plasma-Bubble Regime
+title: Review of "Chirped Laser Pulse Controlled Acceleration in Plasma-Bubble Regime"
 author: A. C. Berceanu
 date: 24 May 2019
 ---
@@ -44,7 +44,7 @@ Furthermore, I see the following issues:
 7. Do the longitudinal fields $E_z$ and $B_z$ only appear due to the explicit
    $r$ dependence in $f(\eta)$? What are their main physical effects?
 
-8. What is the model sensitivity to the initial betatron oscillation conditons,
+8. What is the model sensitivity to the initial betatron oscillation conditions,
    $p_x(t=0)$ and $x(t=0)$?
 
 9. The critical power $P_{cr}$ is the lower threshold for
